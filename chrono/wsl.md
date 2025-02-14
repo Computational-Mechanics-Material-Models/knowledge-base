@@ -51,8 +51,8 @@ and `cmake-gui` require additional packages to be installed (not documented in t
 
 * install chrono-cbl (enable testing for unit and benchamark test during development): 
     * create a build directory `mkdir build` and go into it `cd build`
-    * the default branch should be `cbl`, is not checkout the `cbl` branch: `git checkout --track origin/cbl`
-    * configure the build with cmake: `cmake .. -D Eigen3_DIR:PATH=/usr/share/eigen3/cmake -D ENABLE_MODULE_IRRLICHT=ON -D IRRLICHT_INSTALL_DIR=/usr/include/irrlicht -D IRRLICHT_LIBRARY=/usr/lib/x86_64-linux-gnu/libIrrlicht.so -D ENABLE_MODULE_PARDISO_MKL=ON -D MKL_ROOT:PATH=/usr/include/mkl -D PTHREAD_LIBRARY=/usr/lib/x86_64-linux-gnu/libpthread.a -D CMAKE_INSTALL_PREFIX=bin -D ENABLE_TESTING=ON`
+    * the default branch should be `cbl`, if not, checkout the `cbl` branch: `git checkout --track origin/cbl`
+    * configure the build with cmake: `cmake .. -D Eigen3_DIR:PATH=/usr/share/eigen3/cmake -D ENABLE_MODULE_IRRLICHT=ON -D IRRLICHT_INSTALL_DIR=/usr/include/irrlicht -D IRRLICHT_LIBRARY=/usr/lib/x86_64-linux-gnu/libIrrlicht.so -D ENABLE_MODULE_PARDISO_MKL=ON -D MKL_ROOT:PATH=/usr/include/mkl -D PTHREAD_LIBRARY=/usr/lib/x86_64-linux-gnu/libpthread.a -D CMAKE_INSTALL_PREFIX=bin -D BUILD_TESTING=ON`
     * build `make` and install `make install` the code
 
 
