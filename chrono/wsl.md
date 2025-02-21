@@ -16,7 +16,7 @@ Last updated: 01/06/2025
 
 * chrono module Pardiso-MKL requires Intel MKL library: `sudo apt-get install libmkl-dev`
 
-* The most recent version of Chrono uses oneMKL which is not available from ATP. Instead go to the oneMKL [webpage](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-download.html?operatingsystem=linux&linux-install=online) and copy and paste the "Command Line Download" instructions.
+* The most recent version of Chrono uses oneMKL which is not available from APT. Instead go to the [oneMKL webpage](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-download.html?operatingsystem=linux&linux-install=online) and copy and paste the "Command Line Download" instructions.
 
 * git comes pre-installed on WSL. If not already done:
     * set up your profile: `git config --global user.name <username>` and `git config --global user.email <email_address>`
