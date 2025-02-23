@@ -31,7 +31,7 @@ Last updated: 02/21/2025 (checked on `chrono` commit ed211c7c91db673bd3334ffe877
 * install chrono-cbl (enable testing for unit and benchamark test during development): 
     * create a build directory `mkdir build` and go into it `cd build`
     * the default branch should be `cbl`, if not, checkout the `cbl` branch: `git checkout --track origin/cbl`
-    * configure the build with cmake: `cmake .. -D Eigen3_DIR:PATH=/usr/share/eigen3/cmake -D CH_ENABLE_MODULE_WOOD=ON -D CH_ENABLE_MODULE_IRRLICHT=ON -D CH_ENABLE_MODULE_PARDISO_MKL=ON -D MKL_DIR:PATH=/opt/intel/oneapi/mkl/latest/lib/cmake/mkl -D CMAKE_INSTALL_PREFIX=bin -D BUILD_TESTING=ON`
+    * configure the build with cmake: `cmake .. -D Eigen3_DIR:PATH=/usr/share/eigen3/cmake -D CH_ENABLE_MODULE_WOOD=ON -D CH_ENABLE_MODULE_IRRLICHT=ON -D CH_ENABLE_MODULE_PARDISO_MKL=ON -D MKL_DIR:PATH=/opt/intel/oneapi/mkl/latest/lib/cmake/mkl -D CMAKE_INSTALL_PREFIX=bin -D BUILD_TESTING=ON -D CMAKE_BUILD_TYPE=Release`
     * build `make -j 12` and install `make install` the code (the `-j 12` builds faster using multiple (here 12) jobs)
 
 
