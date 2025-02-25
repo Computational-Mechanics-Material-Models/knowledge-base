@@ -1,0 +1,37 @@
+{
+	"version": 1,
+	"vendor": {
+		"projectchrono.org/chrono/9.0.1": {}
+	},
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 19,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "wsl_cbl_light",
+			"displayName": "Linux User-defined Configuration for lightweight build",
+			"description": "Options for Linux platforms",
+			"binaryDir": "${sourceDir}/build",
+			"generator": "Ninja",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release",
+				"CMAKE_VERBOSE_MAKEFILE": "ON",
+				"CMAKE_INSTALL_PREFIX": "bin",
+                "CH_ENABLE_MODULE_WOOD": "ON",
+				"CH_ENABLE_MODULE_IRRLICHT": "ON",
+				"CH_ENABLE_MODULE_PARDISO_MKL": "ON",
+				"CH_ENABLE_MODULE_POSTPROCESS": "ON",
+				"CH_ENABLE_MODULE_MUMPS": "ON",
+				"BUILD_BENCHMARKING": "ON",
+				"BUILD_TESTING": "ON",
+				"EIGEN3_INCLUDE_DIR": "$env{HOME}/Packages/eigen/include/eigen3",
+				"MKL_DIR": "/opt/intel/oneapi/mkl/latest/lib/cmake/mkl",
+				"Irrlicht_ROOT": "$env{HOME}/Packages/irrlicht-1.8.5",
+				"MUMPS_DIR": "$env{HOME}/Packages/mumps/cmake"
+			}
+		}
+	]
+}
+
