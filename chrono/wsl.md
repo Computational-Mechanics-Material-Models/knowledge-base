@@ -23,7 +23,7 @@ Last updated: 02/21/2025 (checked on `chrono` commit ed211c7c91db673bd3334ffe877
 
 * clone chrono-cbl: `git clone git@github.com:Cusatis-Computational-Services/chrono-cbl.git` and go into the chrono-cbl directory: `cd chrono-cbl`
 
-* get submodules: `git submodule init`, followed by `git submodule update`
+* get submodules: `git submodule update --init --recursive`
 
 # Chrono basic dependencies and third parties
 
@@ -44,7 +44,7 @@ the methods and build scripts provided by Chrono that places all files in a `Pac
 * install Eigen: `./buildEigen.sh`
 
 
-# Chrono advanced dependencies and third parties
+# Chrono advanced dependencies and third parties (optional)
 
 If you wish to build more modules and third party dependencies. This is not necessary / incomplete as of right now:
 
