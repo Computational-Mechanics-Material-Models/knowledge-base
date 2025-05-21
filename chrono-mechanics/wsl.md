@@ -90,7 +90,7 @@ following the guidelines from the [Chrono tutorial](https://api.projectchrono.or
 and `cmake-gui` require additional packages to be installed (not documented in the Dependencies section above, TODO).
 
 
-## Updating chrono
+## Updating chrono-mechanics
 
 Updating your CBL or LDPM code requires understanding the structure of the `chrono-mechanics repository shown below:
 
@@ -109,7 +109,7 @@ The branches work as follows:
     * :warning: DO NOT PUSH TO THIS BRANCH :warning:
 * the `base_dev` branch includes our internal developments that are:
     * common to LDPM and CBL
-    * not yet merged into ProjectChrono/chrono
+    * not present into ProjectChrono/chrono
 * the `cbl_dev` branch includes the code for CBL 
 * the `ldpm_dev` branch includes the code for LDPM
 
@@ -125,3 +125,35 @@ the latest updates from all parent branches along the tree:
 * for LPDM: checkout the `ldpm_dev` branch: `git checkout ldpm_dev` and pull latest updates: `git pull`
 * for CBL: checkout the `cbl_dev` branch: `git checkout cbl_dev` and pull latest updates: `git pull`
 
+## Developing chrono
+
+### LDPM and CBL
+
+To implement new features only in LDPM (`ldpm_dev` branch) or CBL (`cbl_dev` branch), first pull the latest updates (see above) before committing and pushing your changes.
+
+If you have already commited changes on your local repository, follow the steps above with `git pull --rebase` on the last step.
+
+If you do not have push access to the repository, create a fork of `chrono-mechanics` and use the pull requests system.
+
+### Base Development
+
+:warning: COMMUNICATE WITH OTHERS AND MAKE 100% SURE YOU PULLED THE LATEST UPDATES BEFORE UPDATING `base_dev` (see below) :warning:
+
+To implement features common to LDPM and CBL (`base_dev`), first pull the latest updates (see above) before committing and pushing your changes.
+
+Once your changes to `base_dev` are commited, rebase the `cbl_dev` and `ldpm_dev` branches onto `base_dev`:
+ * `git checkout cbl_dev` followed by `git rebase base_dev` 
+ * `git checkout ldpm_dev` followed by `git rebase base_dev` 
+
+:warning: Rebasing modifies the commits SHA. Even though no changes were made to the `cbl_dev` and `ldpm_dev` :warning:
+
+:warning: Force pushing is required to updated the GitHub code ! :warning:
+
+:warning: Double check that no new code was pushed to `cbl_dev` and `ldpm_dev` since you began that proces :warning:
+
+### Pulling updates from ProjectChrono/chrono
+
+TODO
+
+develop your features and `git push` your updates after pulling the lates
+### Getting the latest updates from
