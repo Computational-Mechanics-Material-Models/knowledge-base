@@ -46,7 +46,7 @@ the methods and build scripts provided by Chrono that places all files in a `Pac
 
 * install Pardiso-MKL: Intel oneMKL is not always available from APT on WSL. Instead go to the [oneMKL webpage](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-download.html?operatingsystem=linux&linux-install=online) and copy and paste the "Command Line Download" instructions.
 
-* go into the build-scripts directory `cd chrono-cbl/contrib/build-scripts/linux` and enable script execution `chmod +x *`
+* go into the build-scripts directory `cd chrono-mechanics/contrib/build-scripts/linux` and enable script execution `chmod +x *`
 
 * install Eigen: `./buildEigen.sh`
 
@@ -72,7 +72,7 @@ If you wish to build more modules and third party dependencies. This is not nece
 * configure the build with the json preset:
     * for Ninja: `cmake --preset wsl_cbl_ninja`
     * for Unix Makefiles: `cmake --preset wsl_cbl_unix`
-* go into build directory: `cd build` and build chrono-cbl:
+* go into build directory: `cd build` and build the code:
     * for Ninja: `ninja`
     * for Unix Makefiles: `make`
 
@@ -81,7 +81,7 @@ If you wish to build more modules and third party dependencies. This is not nece
 * go into chrono-mechanics directory: `cd ~/chrono-mechanics`
 * the default branch should be `main`, checkout the `ldpm_dev` branch: `git checkout --track origin/ldpm_dev`
 * configure the build with the json preset: `cmake --preset wsl_ldpm_light`
-* go into build directory: `cd build` and build chrono-cbl: `ninja`
+* go into build directory: `cd build` and build the code: `ninja`
 
 
 [TODO: make presets for ldpm]:#
