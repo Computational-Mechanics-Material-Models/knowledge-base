@@ -141,7 +141,10 @@ If you do not have push access to the repository, create a fork of `chrono-mecha
 
 To implement features common to LDPM and CBL (`base_dev`), first pull the latest updates (see above) before committing and pushing your changes.
 
-Once your changes to `base_dev` are commited, rebase the `cbl_dev` and `ldpm_dev` branches onto `base_dev`:
+Once your changes to `base_dev` are commited, push them: `git push`.
+
+
+Rebase the `cbl_dev` and `ldpm_dev` branches onto `base_dev` to maintain the tree structure in the previous section:
  * `git checkout cbl_dev` followed by `git rebase base_dev` 
  * `git checkout ldpm_dev` followed by `git rebase base_dev` 
 
@@ -150,6 +153,10 @@ Once your changes to `base_dev` are commited, rebase the `cbl_dev` and `ldpm_dev
 :warning: Force pushing is required to updated the GitHub code ! :warning:
 
 :warning: Double check that no new code was pushed to `cbl_dev` and `ldpm_dev` since you began that proces :warning:
+
+Push the rebased branches:
+ * `git checkout cbl_dev` followed by `git push --force-with-lease`
+ * `git checkout ldpm_dev` followed by `git push --force-with-lease`
 
 ### Pulling updates from ProjectChrono/chrono
 
