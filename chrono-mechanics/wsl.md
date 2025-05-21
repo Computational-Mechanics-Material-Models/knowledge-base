@@ -69,10 +69,14 @@ If you wish to build more modules and third party dependencies. This is not nece
 
 * go into chrono-mechanics directory: `cd ~/chrono-mechanics`
 * the default branch should be `main`, checkout the `cbl_dev` branch: `git checkout --track origin/cbl-dev`
-* configure the build with the json preset: `cmake --preset wsl_cbl_light`
-* go into build directory: `cd build` and build chrono-cbl: `ninja`
+* configure the build with the json preset:
+    * for Ninja: `cmake --preset wsl_cbl_ninja`
+    * for Unix Makefiles: `cmake --preset wsl_cbl_unix`
+* go into build directory: `cd build` and build chrono-cbl:
+    * for Ninja: `ninja`
+    * for Unix Makefiles: `make`
 
-### LDPM
+### LDPM (TODO currently not up to date)
 
 * go into chrono-mechanics directory: `cd ~/chrono-mechanics`
 * the default branch should be `main`, checkout the `ldpm_dev` branch: `git checkout --track origin/ldpm_dev`
@@ -81,8 +85,6 @@ If you wish to build more modules and third party dependencies. This is not nece
 
 
 [TODO: make presets for ldpm]:#
-[TODO: make presets for make buid system]:#
-[TODO: write instructions to build with make in list above]:#
 If there are any issues with configuration using the CMake command line, `ccmake` and `cmake-gui` may be used alternatively
 following the guidelines from the [Chrono tutorial](https://api.projectchrono.org/tutorial_install_chrono.html). `ccmake`
 and `cmake-gui` require additional packages to be installed (not documented in the Dependencies section above, TODO).
