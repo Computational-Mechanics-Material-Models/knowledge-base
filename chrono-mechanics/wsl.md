@@ -1,5 +1,5 @@
 # Guide for installing Chrono on Windows Subsystem for Linux (WSL)
-Last updated: 05/20/2025 
+Last updated: 05/22/2025 
 
 ## Installing chrono
 
@@ -121,9 +121,9 @@ Pulling the latest updates for LDPM or CBL requires pulling
 the latest updates from all parent branches along the tree:
 * go into chrono-mechanics directory: `cd ~/chrono-mechanics`
 * checkout the `main` branch: `git checkout main` and pull latest updates: `git pull`
-* checkout the `base_dev` branch: `git checkout base_dev` and pull latest updates: `git pull`
-* for LPDM: checkout the `ldpm_dev` branch: `git checkout ldpm_dev` and pull latest updates: `git pull`
-* for CBL: checkout the `cbl_dev` branch: `git checkout cbl_dev` and pull latest updates: `git pull`
+* checkout the `base_dev` branch: `git checkout base_dev` and pull latest updates: `git pull --rebase`
+* for LPDM: checkout the `ldpm_dev` branch: `git checkout ldpm_dev` and pull latest updates: `git pull --rebase`
+* for CBL: checkout the `cbl_dev` branch: `git checkout cbl_dev` and pull latest updates: `git pull --rebase`
 
 :construction: we will eventually want to merge `cbl_dev` and `ldpm_dev` into `base_dev` so that both modules are accessible from the same code
 
@@ -133,7 +133,7 @@ the latest updates from all parent branches along the tree:
 
 To implement new features only in LDPM (`ldpm_dev` branch) or CBL (`cbl_dev` branch), first pull the latest updates (see above) before committing and pushing your changes.
 
-If you have already commited changes on your local repository, follow the steps above with `git pull --rebase` on the last step.
+If you have already commited changes on your local repository, follow the steps above.
 
 If you do not have push access to the repository, create a fork of `chrono-mechanics` and use the pull requests system.
 
