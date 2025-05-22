@@ -125,6 +125,8 @@ the latest updates from all parent branches along the tree:
 * for LPDM: checkout the `ldpm_dev` branch: `git checkout ldpm_dev` and pull latest updates: `git pull`
 * for CBL: checkout the `cbl_dev` branch: `git checkout cbl_dev` and pull latest updates: `git pull`
 
+:construction: we will eventually want to merge `cbl_dev` and `ldpm_dev` into `base_dev` so that both modules are accessible from the same code
+
 ## Developing chrono
 
 ### LDPM and CBL
@@ -154,13 +156,22 @@ Rebase the `cbl_dev` and `ldpm_dev` branches onto `base_dev` to maintain the tre
 
 :warning: Double check that no new code was pushed to `cbl_dev` and `ldpm_dev` since you began that proces :warning:
 
-Push the rebased branches:
+Force push the rebased branches:
  * `git checkout cbl_dev` followed by `git push --force-with-lease`
  * `git checkout ldpm_dev` followed by `git push --force-with-lease`
 
 ### Pulling updates from ProjectChrono/chrono
 
+The original ProjectChrono/chrono developments must be periodically integrated into chrono-mechanics.
+
+Set the ProjectChrono/chrono repository as a remote: `git remote add upstream git@github.com:projectchrono/chrono.git`
+(this should only be done once)
+
+ * go to your `main` branch on `chrono-mechanics`: `git checkout main`
+ * pull the lastest ProjectChrono/chrono updates: `git pull`
+ * push the changes to `chrono-mechanics`: `git push`
+
+Once this is done, the sub-tree made up of the `base_dev`, `cbl_dev` and `ldpm_dev` branches must be rebased onto the newly pulled, latest `main` commit:
+
 TODO
 
-develop your features and `git push` your updates after pulling the lates
-### Getting the latest updates from
