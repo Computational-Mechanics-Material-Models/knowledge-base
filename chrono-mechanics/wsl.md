@@ -76,15 +76,18 @@ If you wish to build more modules and third party dependencies. This is not nece
     * for Ninja: `ninja`
     * for Unix Makefiles: `make`
 
-### LDPM (TODO currently not up to date)
+### LDPM 
 
 * go into chrono-mechanics directory: `cd ~/chrono-mechanics`
 * the default branch should be `main`, checkout the `ldpm_dev` branch: `git checkout --track origin/ldpm_dev`
-* configure the build with the json preset: `cmake --preset wsl_ldpm_light`
-* go into build directory: `cd build` and build the code: `ninja`
+* configure the build with the json preset:
+    * for Ninja: `cmake --preset wsl_ldpm_ninja`
+    * for Unix Makefiles: `cmake --preset wsl_ldpm_unix`
+* go into build directory: `cd build` and build the code:
+    * for Ninja: `ninja`
+    * for Unix Makefiles: `make`
 
 
-[TODO: make presets for ldpm]:#
 If there are any issues with configuration using the CMake command line, `ccmake` and `cmake-gui` may be used alternatively
 following the guidelines from the [Chrono tutorial](https://api.projectchrono.org/tutorial_install_chrono.html). `ccmake`
 and `cmake-gui` require additional packages to be installed (not documented in the Dependencies section above, TODO).
