@@ -61,7 +61,7 @@
 
         {
 			"name": "wsl_all_ninja",
-			"displayName": "WSL Configuration for CBL build using Ninja",
+			"displayName": "WSL Configuration for ALL MODELS build using Ninja",
 			"description": "Options for Linux platforms",
 			"binaryDir": "${sourceDir}/build",
 			"generator": "Ninja",
@@ -113,7 +113,7 @@
 
         {
 			"name": "wsl_ldpm_unix",
-			"displayName": "WSL Configuration for CBL build using Unix Makefiles",
+			"displayName": "WSL Configuration for LDPM build using Unix Makefiles",
 			"description": "Options for Linux platforms",
 			"binaryDir": "${sourceDir}/build",
 			"generator": "Unix Makefiles",
@@ -138,7 +138,7 @@
 
         {
 			"name": "wsl_all_unix",
-			"displayName": "WSL Configuration for CBL build using Unix Makefiles",
+			"displayName": "WSL Configuration for ALL MODELS build using Unix Makefiles",
 			"description": "Options for Linux platforms",
 			"binaryDir": "${sourceDir}/build",
 			"generator": "Unix Makefiles",

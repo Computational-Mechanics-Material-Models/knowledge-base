@@ -140,7 +140,7 @@ If changes to `base_dev` occured during your development:
 * force push your changes: `git push --force-with-lease`
     * :warning: Rebasing modifies the commits SHA. Even though no changes were made to `<branch_name>` :warning:
     * :warning: Force pushing is required to updated the remote branch ! :warning:
-    * :warning: if multiple people woth on `<branch_name>`, double check that no new code was pushed since you began that proces :warning:
+    * :warning: if multiple people work on `<branch_name>`, double check that no new code was pushed since you began that proces :warning:
 
 
 ### Pulling updates from ProjectChrono/chrono (Admin only)
