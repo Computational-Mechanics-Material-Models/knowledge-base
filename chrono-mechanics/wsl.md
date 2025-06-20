@@ -1,5 +1,5 @@
 # Guide for installing Chrono on Windows Subsystem for Linux (WSL)
-Last updated: 05/22/2025 
+Last updated: 06/20/2025
 
 ## Installing chrono
 
@@ -30,11 +30,11 @@ and go into the chrono-mechanics directory: `cd chrono-mechanics`
 
 * install submodules: `git submodule update --init --recursive`
 
-* download the preset file `chrono/CMakeUserPresets.json` in this `knowldge-base` repository and copy it into the `chrono-mechanics` directory
+* download the preset file `chrono/CMakeUserPresets.json` in this `knowldge-base` repository and copy it at the root of the `chrono-mechanics` directory
 
 ### Chrono basic dependencies and third parties
 
-Chrono requires dependencies that are easier to install using 
+Chrono requires dependencies that are easier to install using
 the methods and build scripts provided by Chrono that places all files in a `Packages` folder
 
 * go into your home directory: `cd ~` and create Packages directory: `mkdir Packages`
@@ -64,25 +64,34 @@ If you wish to build more modules and third party dependencies. This is not nece
 
 * install Blaze (for MULTICORE module): `./buildBlaze.sh`
 
-
-### CBL
+### Chrono Code
 
 * go into chrono-mechanics directory: `cd ~/chrono-mechanics`
-* the default branch should be `main`, checkout the `cbl_dev` branch: `git checkout --track origin/cbl-dev`
-* configure the build with the json preset:
+* the default branch should be `base_dev`, if not, checkout the `base_dev` branch: `git checkout --track origin/base_dev`
+
+#### CBL
+
+* configure the build with the CBL json preset:
     * for Ninja: `cmake --preset wsl_cbl_ninja`
     * for Unix Makefiles: `cmake --preset wsl_cbl_unix`
 * go into build directory: `cd build` and build the code:
     * for Ninja: `ninja`
     * for Unix Makefiles: `make`
 
-### LDPM 
+#### LDPM
 
-* go into chrono-mechanics directory: `cd ~/chrono-mechanics`
-* the default branch should be `main`, checkout the `ldpm_dev` branch: `git checkout --track origin/ldpm_dev`
-* configure the build with the json preset:
+* configure the build with the LDPM json preset:
     * for Ninja: `cmake --preset wsl_ldpm_ninja`
     * for Unix Makefiles: `cmake --preset wsl_ldpm_unix`
+* go into build directory: `cd build` and build the code:
+    * for Ninja: `ninja`
+    * for Unix Makefiles: `make`
+
+#### ALL MODELS
+
+* configure the build with the json preset for ALL MODELS:
+    * for Ninja: `cmake --preset wsl_all_ninja`
+    * for Unix Makefiles: `cmake --preset wsl_all_unix`
 * go into build directory: `cd build` and build the code:
     * for Ninja: `ninja`
     * for Unix Makefiles: `make`
@@ -95,75 +104,46 @@ and `cmake-gui` require additional packages to be installed (not documented in t
 
 ## Updating chrono-mechanics
 
-Updating your CBL or LDPM code requires understanding the structure of the `chrono-mechanics repository shown below:
+Updating your code requires understanding the structure of the `chrono-mechanics repository shown below:
 
 ```
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ main  
-    \                    
-     \                      _ _ cbl_dev
-      \                    /
-       \_ _ _ base_dev _ _/
-                          \
-                           \_ _ ldpm_dev
+o---o---o---o---o---o---o---o---o  main
+     \
+      o---o---o---o  base_dev
 ```
 
 The branches work as follows:
 * the `main` branch tracks ProjectChrono/chrono's `main` branch to get the updates
-    * :warning: DO NOT PUSH TO THIS BRANCH :warning:
-* the `base_dev` branch includes our internal developments that are:
-    * common to LDPM and CBL
-    * not present into ProjectChrono/chrono
-* the `cbl_dev` branch includes the code for CBL 
-* the `ldpm_dev` branch includes the code for LDPM
+* the `base_dev` branch includes all our developments (CBL, LDPM, ...) that are not present into ProjectChrono/chrono
 
-The tree is organized as follows:
-* the `cbl_dev` and `ldpm_dev` branches are based on the `base_dev` branch 
-* the `base_dev` branche is based on the `main` branch 
-
-Pulling the latest updates for LDPM or CBL requires pulling
-the latest updates from all parent branches along the tree:
+To pull the latest updates:
 * go into chrono-mechanics directory: `cd ~/chrono-mechanics`
 * checkout the `main` branch: `git checkout main` and pull latest updates: `git pull`
+    * this is required since this branch is ocasionally synced to ProjectChrono/chrono's `main` branch
 * checkout the `base_dev` branch: `git checkout base_dev` and pull latest updates: `git pull --rebase`
-* for LPDM: checkout the `ldpm_dev` branch: `git checkout ldpm_dev` and pull latest updates: `git pull --rebase`
-* for CBL: checkout the `cbl_dev` branch: `git checkout cbl_dev` and pull latest updates: `git pull --rebase`
-
-:construction: we will eventually want to merge `cbl_dev` and `ldpm_dev` into `base_dev` so that both modules are accessible from the same code
+    * pulling with rebase is required since the `base_dev` branch is frequently rebased on the `main` branch
 
 ## Developing chrono
 
-### LDPM and CBL
+:warning: The `base_dev` branch is now protected, you can no longer push to it and must use Pull Requests :warning:
 
-To implement new features only in LDPM (`ldpm_dev` branch) or CBL (`cbl_dev` branch), first pull the latest updates (see above) before committing and pushing your changes.
+To implement new features:
+* pull the latest updates (see above)
+* create a new branch: `git checkout -b <branch_name>`
+* edit files, add and commit
+* push your branch: `git push -u origin <branch_name>`
+* submit a Pull Request on GitHub
 
-If you have already commited changes on your local repository, follow the steps above.
-
-If you do not have push access to the repository, create a fork of `chrono-mechanics` and use the pull requests system.
-
-### Base Development
-
-:warning: COMMUNICATE WITH OTHERS AND MAKE 100% SURE YOU PULLED THE LATEST UPDATES BEFORE UPDATING `base_dev` (see below) :warning:
-
-To implement features common to LDPM and CBL (`base_dev`), first pull the latest updates (see above) before committing and pushing your changes.
-
-Once your changes to `base_dev` are commited, push them: `git push`.
+If changes to `base_dev` occured during your development:
+* pull the latest updates (see above)
+* rebase your branch: `git checkout <branch_name>` followed by `git rebase base_dev`
+* force push your changes: `git push --force-with-lease`
+    * :warning: Rebasing modifies the commits SHA. Even though no changes were made to `<branch_name>` :warning:
+    * :warning: Force pushing is required to updated the remote branch ! :warning:
+    * :warning: if multiple people woth on `<branch_name>`, double check that no new code was pushed since you began that proces :warning:
 
 
-Rebase the `cbl_dev` and `ldpm_dev` branches onto `base_dev` to maintain the tree structure in the previous section:
- * `git checkout cbl_dev` followed by `git rebase base_dev` 
- * `git checkout ldpm_dev` followed by `git rebase base_dev` 
-
-:warning: Rebasing modifies the commits SHA. Even though no changes were made to the `cbl_dev` and `ldpm_dev` :warning:
-
-:warning: Force pushing is required to updated the GitHub code ! :warning:
-
-:warning: Double check that no new code was pushed to `cbl_dev` and `ldpm_dev` since you began that proces :warning:
-
-Force push the rebased branches:
- * `git checkout cbl_dev` followed by `git push --force-with-lease`
- * `git checkout ldpm_dev` followed by `git push --force-with-lease`
-
-### Pulling updates from ProjectChrono/chrono
+### Pulling updates from ProjectChrono/chrono (Admin only)
 
 The original ProjectChrono/chrono developments must be periodically integrated into chrono-mechanics.
 
@@ -174,7 +154,8 @@ Set the ProjectChrono/chrono repository as a remote: `git remote add upstream gi
  * pull the lastest ProjectChrono/chrono updates: `git pull`
  * push the changes to `chrono-mechanics`: `git push`
 
-Once this is done, the sub-tree made up of the `base_dev`, `cbl_dev` and `ldpm_dev` branches must be rebased onto the newly pulled, latest `main` commit:
+Once this is done, the `base_dev` branch must be rebased onto the newly pulled, latest `main` commit:
+* `git checkout base_dev` followed by `git rebase main`
 
 TODO
 
